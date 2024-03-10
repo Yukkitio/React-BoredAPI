@@ -18,7 +18,7 @@ const Navbar = () => {
       borderBottomRightRadius: 30,
       borderBottom: `2px solid ${theme.palette.primary.light}`
     }}>
-      <Toolbar>
+      <Toolbar variant="dense">
         <Tabs sx={{ margin: '0 auto' }} variant="fullWidth">
           {links.map((link) => (
             <Tab 
