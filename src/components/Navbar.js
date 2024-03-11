@@ -16,7 +16,9 @@ const Navbar = () => {
       backdropFilter: 'blur(2px)',
       borderBottomLeftRadius: 30,
       borderBottomRightRadius: 30,
-      borderBottom: `2px solid ${theme.palette.primary.light}`
+      borderBottom: `2px solid ${theme.palette.primary.light}`,
+      width: "98%",
+      mx: "auto",
     }}>
       <Toolbar variant="dense">
         <Tabs sx={{ margin: '0 auto' }} variant="fullWidth">

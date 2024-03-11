@@ -13,11 +13,14 @@ import Research from './pages/Research';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#202124',
+      main: '#294959',
+      light: '#017882',
+      dark:'#202124',
     },
     secondary: {
-      main: '#468189',
-      light: '#9DBEBB'
+      main: '#88D581',
+      light: '#F9F871',
+      dark:'#2AA98E',
     },
     tonalOffset: 0.5,
   },

@@ -5,50 +5,56 @@
 // A unique numeric id [1000000, 9999999]
 
 import React from 'react';
-import { useTheme, Typography, Box, alpha, Chip, LinearProgress } from '@mui/material';
+import { useTheme, Typography, Box, alpha, Chip, LinearProgress, Divider } from '@mui/material';
 
 const HAnswer = ({ data }) => {
   const theme = useTheme();
 
-  const getColor = (value) => {
-    if (value <= 33) {
-      return theme.palette.secondary.light;
-    } else if (value > 33 && value <= 66) {
-      return theme.palette.secondary.main;
-    } else {
-      return theme.palette.secondary.dark;
-    }
-  };
-
   return (
     <Box sx={{
-      width: "98%", 
-      height: "50vh",
+      width: "97%",
       mt: 2,
       border: `1px solid ${alpha(theme.palette.primary.light, 0.5)}`,
       borderRadius: 1.5,
       backgroundColor: alpha(theme.palette.background.default, 0.5),
-      backdropFilter: 'blur(20px)'
+      backdropFilter: 'blur(20px)',
+      textAlign: 'center'
       }}>
 
-      <Typography variant="h4" component="h1" gutterBottom fontWeight="fontWeightBold" sx={{ color: theme.palette.secondary.main }}>
+      <Typography variant="h3" component="h1" fontWeight="fontWeightBold" sx={{ color: theme.palette.secondary.dark }}>
         Your activity
       </Typography>
 
-      <Typography variant="h3" gutterBottom sx={{ color: theme.palette.primary.main }}>
+      <Divider variant="middle" />
+
+
+      <Typography variant="h2" fontWeight="fontWeightRegular" sx={{ color: theme.palette.primary.main }}>
         {data.activity}
       </Typography>
 
-      <Chip label={data.type} color="secondary"/>
 
-      <Typography variant="body1" gutterBottom>
-        Participants: {data.participants}
-      </Typography>
+      <Box sx={{ display: 'flex', alignContent:'center', alignItems:'center' }}>
+        <Typography variant="body1" sx={{ mr: 2 }}>Participants :</Typography>
+        <Chip label={data.participants} 
+          sx={{
+            backgroundColor: theme.palette.secondary.dark,
+            boxShadow: `0px 2px 4px ${theme.palette.primary.dark}`
+          }}/>
+      </Box>
+
+      <Box sx={{ display: 'flex', alignContent:'center', alignItems:'center' }}>
+      <Typography variant="body1" sx={{ mr: 2 }}>Type :</Typography>
+      <Chip label={data.type}
+        sx={{
+          backgroundColor: theme.palette.secondary.dark,
+          boxShadow: `0px 2px 4px ${theme.palette.primary.dark}`
+        }}/>
+      </Box>
 
       <Box sx={{ display: 'flex' }}>
-        <Typography variant="body1" gutterBottom sx={{ mr: 2 }}>Price:</Typography>
+        <Typography variant="body1" sx={{ mr: 2 }}>Price :</Typography>
         {data.price === 0 ? (
-          <Typography variant="body1" gutterBottom>Free</Typography>
+          <Typography variant="body1">Free</Typography>
         ) : (
           <Box sx={{ display: 'flex', alignItems: 'center', width: '20%' }}>
             <LinearProgress variant="determinate" value={data.price * 100} 
@@ -57,8 +63,9 @@ const HAnswer = ({ data }) => {
                 mr: 1, 
                 height: '10px',
                 borderRadius: '5px',
+                boxShadow: `0px 2px 4px ${theme.palette.primary.dark}`,
                 '& .MuiLinearProgress-bar': {
-                  backgroundColor: getColor(data.price * 100)
+                  backgroundColor: theme.palette.secondary.dark
                 }
               }}
             />
@@ -67,20 +74,23 @@ const HAnswer = ({ data }) => {
         )}
       </Box>
       
-      <Box sx={{ display: 'flex' }}>
-        <Typography variant="body1" gutterBottom sx={{ mr: 2 }}>Accessibility:</Typography>
+      <Box sx={{ display: 'flex', alignContent:'center', alignItems:'center' }}>
+        <Typography variant="body1" gutterBottom sx={{ mr: 2 }}>Accessibility :</Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', width: '20%' }}>
-          <LinearProgress variant="determinate" value={(1 - data.accessibility) * 100} 
-                sx={{ 
-                  flexGrow: 1, 
-                  mr: 1, 
-                  height: '10px',
-                  borderRadius: '5px',
-                  '& .MuiLinearProgress-bar': {
-                    backgroundColor: getColor((1 - data.accessibility) * 100)
-                  }
-                }}
-              />
+          <LinearProgress 
+            variant="determinate" 
+            value={(1 - data.accessibility) * 100} 
+            sx={{ 
+              flexGrow: 1, 
+              mr: 1, 
+              height: '10px',
+              borderRadius: '5px',
+              boxShadow: `0px 2px 4px ${theme.palette.primary.dark}`,
+              '& .MuiLinearProgress-bar': {
+                backgroundColor: theme.palette.secondary.dark,
+              }  
+            }}
+          />
           <Typography variant="body2">{`${Math.round((1 - data.accessibility) * 100)} %`}</Typography>
         </Box>
       </Box>
