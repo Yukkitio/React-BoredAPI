@@ -16,7 +16,12 @@ const HWelcome = ({ onRefresh, isLoading }) => {
         gap: theme.spacing(2),
       }}>
       
-      <Typography fontWeight="fontWeightBold" sx={{ color: theme.palette.secondary.dark, fontSize: 180, textShadow: `3px 2px 4px ${theme.palette.primary.main}`}}>
+      <Typography fontWeight="fontWeightBold" 
+        sx={{ 
+          color: theme.palette.secondary.dark, 
+          fontSize: 180, 
+          textShadow: `3px 2px 4px ${theme.palette.primary.main}`
+        }}>
         Bored ?
       </Typography>
       
@@ -28,12 +33,16 @@ const HWelcome = ({ onRefresh, isLoading }) => {
         onClick={onRefresh}
         sx={{
           backgroundColor: theme.palette.secondary.dark,
-          '&:hover': { backgroundColor: theme.palette.secondary.main},
           padding: '4% 8%',
           borderRadius: "82% 18% 32% 68% / 49% 29% 71% 51%",
           marginTop: theme.spacing(8),
           boxShadow: `inset 3px 2px 10px 5px ${theme.palette.primary.main}`,
-          color: theme.palette.primary.main
+          color: theme.palette.primary.main,
+          transition: 'all 0.5s ease',
+          '&:hover': { 
+            backgroundColor: theme.palette.primary.light,
+            borderRadius: "26% 74% 49% 51% / 38% 39% 61% 62%",
+          }
         }}>
         {isLoading ? <CircularProgress size={24} /> : "Try it"}
       </Button>
