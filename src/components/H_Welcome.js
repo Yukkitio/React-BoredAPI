@@ -42,6 +42,7 @@ const HWelcome = ({ onRefresh, isLoading }) => {
           '&:hover': { 
             backgroundColor: theme.palette.primary.light,
             borderRadius: "26% 74% 49% 51% / 38% 39% 61% 62%",
+            color: theme.palette.secondary.light, 
           }
         }}>
         {isLoading ? <CircularProgress size={24} /> : "Try it"}
